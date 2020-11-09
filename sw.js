@@ -9,6 +9,7 @@ if (workbox) {
 
 //precaching
 workbox.precaching.precacheAndRoute([
+  {url : '/', revision: '1'},
   {url : '/index.html', revision: '1'},
   {url : '/jadwal_view.html', revision: '1'},
   {url : '/nav.html', revision: '1'},
