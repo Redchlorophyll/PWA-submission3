@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>futbalmania</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="logos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="logos/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logos/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="description" content="submission 2"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/card.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="theme-color" content="#eceff1"/>
+  </head>
+  <body class="blue-grey lighten-5">
+    <!-- Navigasi -->
+        <nav class="blue-grey darken-2" role="navigation">
+          <div class="nav-wrapper container">
+            <a href="#" class="brand-logo" id="logo-container">futbalmania</a>
+            <a href="." class="sidenav-trigger" data-target="nav-mobile">
+              <i class="material-icons">arrow_back</i>
+            </a>
+            <ul class="topnav right hide-on-med-and-down"></ul>
+            <ul class="sidenav" id="nav-mobile"></ul>
+          </div>
+        </nav>
+        <!-- Akhir Navigasi -->
+
+
+    <!-- MAIN start -->
+    <main class="container">
+      <div class="row">
+        <div class="row" id="body-content">
+
+        </div>
+        <div class="col s12 center-align">
+            <a id="save" class="waves-effect waves-light blue-grey darken-2 btn  save">save</a>
+            <a id="delete" class="waves-effect waves-light deep-orange accent-4 btn" href="#bookmark">Delete</a>
+        </div>
+      </div>
+
+    </main>
+    <!-- MAIN end -->
+
+
+    <script src="js/idb.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/api.js" charset="utf-8"></script>
+    <script src="register.js"></script>
+
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const isFromSaved = urlParams.get("saved");
+
+      const btnSave = document.getElementById("save");
+      const btnDelete =  document.getElementById("delete");
+
+      if(isFromSaved) {
+        btnSave.style.display = 'none';
+
+        //ambil artikel lalu tampilkan
+         const item = getSavedScheduleById()
+
+         btnDelete.onclick = function() {
+           item.then(schedule => {
+             deleteById(schedule.id);
+             window.location.href = ".#bookmark";
+           })
+         }
+      } else {
+        btnDelete.style.display = 'none';
+        const item = getScheduleById();
+
+        btnSave.onclick = function() {
+          console.log("tombol FAB di klik");
+          item.then(schedule => {
+            saveForLater(schedule);
+          })
+        }
+
+      }
+
+
+    });
+    </script>
+  </body>
+</html>

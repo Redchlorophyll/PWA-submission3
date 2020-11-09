@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>futbalmania</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="logos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="logos/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logos/favicon-16x16.png">
+    <meta name="description" content="submission 2"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/card.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="theme-color" content="#eceff1"/>
+  </head>
+  <body class="blue-grey lighten-5">
+    <!-- NAV start -->
+    <nav class="blue-grey darken-2" role="navigation">
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo" id="logo-container">futbalmania</a>
+        <a href="#" class="sidenav-trigger" data-target="nav-mobile"><i class="material-icons">menu</i></a>
+
+        <ul class="topnav right hide-on-med-and-down"></ul>
+        <ul class="sidenav" id="nav-mobile"></ul>
+      </div>
+    </nav>
+    <!-- NAV end -->
+    <!-- MAIN start -->
+    <main class="container" id="body-content">
+      <div class="row">
+        <!-- card match result START -->
+        <div class="card col s12 schedule-card">
+              <div class="row col s12">
+                <div class="col s12">
+                  <div cslass="competition center-align">
+                    <span>${data.competition.name}</span>
+                  </div>
+                </div>
+                <div class="row col s12 m6  match-wrapper">
+                  <div class="home-team">
+                    <div class="teams center-align">
+                      <span>${data.homeTeam.name}</span>
+                    </div>
+                  </div>
+                  <div class="home-score blue-grey darken-3">
+                    <div class="score white-text center-align">
+                      <span>${data.score.fullTime.homeTeam}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col s12 m6 table">
+                  <div class="away-score blue-grey darken-3">
+                    <div class="score  white-text center-align">
+                      <span>${data.score.fullTime.awayTeam}</span>
+                    </div>
+                  </div>
+                  <div class="away-team">
+                    <div class="teams center-align">
+                      <span>${data.awayTeam.name}</span>
+                    </div>
+                  </div>
+                </div>
+                <!--extra -->
+                <div class="row col s12 center-align border-top">
+                  <div class="col s4 center-align">
+                    <span>${data.homeTeam.name}</span>
+                  </div>
+                  <div class="col s4 bold center-align">
+                    <span>stats</span>
+                  </div>
+                  <div class="col s4 center-align">
+                    <span>${data.awayTeam.name}</span>
+                  </div>
+                </div>
+                <div class="col s4 center-align">
+                  <span>${data.score.halfTime.homeTeam}</span>
+                </div>
+                <div class="col s4 center-align">
+                  <span>halftime</span>
+                </div>
+                <div class="col s4 center-align">
+                  <span>${data.score.fullTime.awayTeam}</span>
+                </div>
+                <div class="col s4 center-align">
+                  <span>${data.score.extraTime.homeTeam || 0}</span>
+                </div>
+                <div class="col s4 center-align">
+                  <span>ExtraTime</span>
+                </div>
+                <div class="col s4 center-align">
+                  <span>${data.score.extraTime.awayTeam || 0}</span>
+                </div>
+                <div class="col s4 center-align">
+                  <span>${data.score.fullTime.homeTeam}</span>
+                </div>
+                <div class="col s4 center-align">
+                  <span>fulltime</span>
+                </div>
+                <div class="col s4 center-align">
+                  <span>${data.score.fullTime.awayTeam}</span>
+                </div>
+                <!--extra end -->
+              </div>
+        </div>
+        <!-- card match result END -->
+      </div>
+    </main>
+    <!-- MAIN end -->
+
+  </body>
+</html>

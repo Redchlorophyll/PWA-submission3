@@ -1,0 +1,22 @@
+{
+    "name": "futbalmania",
+    "short_name": "futbalmania",
+    "description": "App sederhana untuk mengecek skor pertandingan dan jadwal",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#eceff1",
+    "theme_color": "#eceff1",
+    "gcm_sender_id": "762598950282",
+    "icons": [
+        {
+            "src": "logos/logo192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "logos/logo512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

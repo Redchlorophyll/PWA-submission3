@@ -1,0 +1,94 @@
+.header-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+main {
+  margin-top: 50px !important;
+}
+
+.loader {
+  width: 300px;
+position: absolute;
+top :0;
+left: 0;
+right: 0;
+bottom: 0;
+margin: auto;
+}
+
+.schedule-card {
+  border-top: solid #cfd8dc;
+  border-width: 8px;
+}
+
+.competition {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: solid #000;
+  border-width: 0.5px;
+  margin-bottom: 15px;
+}
+
+.border-top {
+  border-top: solid #000;
+  border-width: 0.5px;
+  margin-top: 30px;
+  padding-top: 15px !important;
+}
+
+.teams {
+  padding-top: 20px;
+  height: 80px;
+  font-size: 20px;
+}
+
+.score {
+  height: 80px;
+  line-height: 80px;
+  font-size: 20px;
+}
+
+.home-wrapper, .away-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.home-team {
+  order: 1;
+  width: 75%;
+}
+.home-score {
+  order: 2;
+  width: 25%;
+}
+
+.away-score {
+  order: 1;
+  width: 25%;
+}
+.away-team {
+  order: 2;
+  width: 75%;
+}
+
+.bold span {
+  font-weight: bold;
+}
+
+@media only screen and (max-width:640px) {
+  .teams {
+    font-size: 15px;
+  }
+
+}
+
+@media only screen and (max-width:601px) {
+  .away-score {
+    order: 2;
+  }
+  .away-team {
+    order: 1;
+  }
+}
