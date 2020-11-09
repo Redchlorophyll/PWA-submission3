@@ -2,7 +2,7 @@
     "name": "futbalmania",
     "short_name": "futbalmania",
     "description": "App sederhana untuk mengecek skor pertandingan dan jadwal",
-    "start_url": "index.html",
+    "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#eceff1",
     "theme_color": "#eceff1",
