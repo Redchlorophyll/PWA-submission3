@@ -9,7 +9,6 @@ if (workbox) {
 
 //precaching
 workbox.precaching.precacheAndRoute([
-  {url : '/', revision: '1'},
   {url : '/index.html', revision: '1'},
   {url : '/jadwal_view.html', revision: '1'},
   {url : '/nav.html', revision: '1'},
@@ -23,13 +22,6 @@ workbox.precaching.precacheAndRoute([
   {url : "/js/idb.js", revision: '1'},
   {url : "/js/db.js", revision: '1'},
 ]);
-
-workbox.routing.registerRoute(
-  'https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js',
-workbox.strategies.cacheFirst({
-  cacheName: 'workbox',
-})
-)
 
 //register all logo in logos folder with cachefirst strategies
 workbox.routing.registerRoute(
