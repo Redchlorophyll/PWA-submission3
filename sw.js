@@ -9,18 +9,18 @@ if (workbox) {
 //precaching
 workbox.precaching.precacheAndRoute(
 [
-  {url : '/index.html', revision: '1'},
-  {url : '/jadwal_view.html', revision: '1'},
-  {url : '/nav.html', revision: '1'},
-  {url : '/manifest.json', revision: '1'},
-  {url : '/register.js', revision: '1'},
-  {url : "/css/materialize.min.css", revision: '1'},
-  {url : "/css/card.css", revision: '1'},
-  {url : "/js/materialize.min.js", revision: '1'},
-  {url : "/js/nav.js", revision: '1'},
-  {url : "/js/api.js", revision: '1'},
-  {url : "/js/idb.js", revision: '1'},
-  {url : "/js/db.js", revision: '1'},
+  {url : '/PWA-submission3/index.html', revision: '1'},
+  {url : '/PWA-submission3/jadwal_view.html', revision: '1'},
+  {url : '/PWA-submission3/nav.html', revision: '1'},
+  {url : '/PWA-submission3/manifest.json', revision: '1'},
+  {url : '/PWA-submission3/register.js', revision: '1'},
+  {url : "/PWA-submission3/css/materialize.min.css", revision: '1'},
+  {url : "/PWA-submission3/css/card.css", revision: '1'},
+  {url : "/PWA-submission3/js/materialize.min.js", revision: '1'},
+  {url : "/PWA-submission3/js/nav.js", revision: '1'},
+  {url : "/PWA-submission3/js/api.js", revision: '1'},
+  {url : "/PWA-submission3/js/idb.js", revision: '1'},
+  {url : "/PWA-submission3/js/db.js", revision: '1'},
 ],
 {
   // Ignore all URL parameters.
@@ -36,7 +36,7 @@ const {ExpirationPlugin} = workbox.expiration;
 
 //register all logo in logos folder with cachefirst strategies
 workbox.routing.registerRoute(
-  new RegExp('/logos/'),
+  new RegExp('/PWA-submission3/logos/'),
 new CacheFirst({
     cacheName: 'futbalmania-logos',
   })
@@ -45,7 +45,7 @@ new CacheFirst({
 
 //register all image in img folder with cachefirst strategiest
 workbox.routing.registerRoute(
-    new RegExp('/img/'),
+    new RegExp('/PWA-submission3/img/'),
 new CacheFirst({
   cacheName: 'futballmania-img',
 })
@@ -78,7 +78,7 @@ new CacheFirst({
 
 //register all file in pages folder using staleWhileRevalidate strategies
 workbox.routing.registerRoute(
-  new RegExp('/pages/'),
+  new RegExp('/PWA-submission3/pages/'),
 new StaleWhileRevalidate({
     cacheName: "pages"
   })
