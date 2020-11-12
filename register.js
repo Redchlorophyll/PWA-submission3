@@ -32,7 +32,7 @@ function requestPermission() {
       }
 
       navigator.serviceWorker.getRegistration().then(function(reg) {
-          reg.showNotification('Notifikasi diijinken!');
+          // reg.showNotification('Notifikasi diijinken!');
       });
 
       if (('PushManager' in window)) {

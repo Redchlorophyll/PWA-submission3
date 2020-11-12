@@ -1,5 +1,4 @@
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js');
-
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 if (workbox) {
   console.log("workbox berhasil dimuat");
 } else {
@@ -8,7 +7,8 @@ if (workbox) {
 
 
 //precaching
-workbox.precaching.precacheAndRoute([
+workbox.precaching.precacheAndRoute(
+[
   {url : '/index.html', revision: '1'},
   {url : '/jadwal_view.html', revision: '1'},
   {url : '/nav.html', revision: '1'},
@@ -21,12 +21,23 @@ workbox.precaching.precacheAndRoute([
   {url : "/js/api.js", revision: '1'},
   {url : "/js/idb.js", revision: '1'},
   {url : "/js/db.js", revision: '1'},
-]);
+],
+{
+  // Ignore all URL parameters.
+  ignoreURLParametersMatching: [/.*/],
+}
+);
+
+
+const {registerRoute} = workbox.routing;
+const {StaleWhileRevalidate, NetworkFirst, CacheFirst} = workbox.strategies;
+const {CacheableResponsePlugin} = workbox.cacheableResponse;
+const {ExpirationPlugin} = workbox.expiration;
 
 //register all logo in logos folder with cachefirst strategies
 workbox.routing.registerRoute(
   new RegExp('/logos/'),
-workbox.strategies.cacheFirst({
+new CacheFirst({
     cacheName: 'futbalmania-logos',
   })
 );
@@ -35,7 +46,7 @@ workbox.strategies.cacheFirst({
 //register all image in img folder with cachefirst strategiest
 workbox.routing.registerRoute(
     new RegExp('/img/'),
-workbox.strategies.cacheFirst({
+new CacheFirst({
   cacheName: 'futballmania-img',
 })
 )
@@ -43,7 +54,7 @@ workbox.strategies.cacheFirst({
 //register materialize font stylesheets using staleWhileRevalidate strategies
 workbox.routing.registerRoute(
   "https://fonts.googleapis.com/icon?family=Material+Icons",
-workbox.strategies.staleWhileRevalidate({
+new StaleWhileRevalidate({
     cacheName: 'google-fonts-stylesheets',
   })
 );
@@ -51,13 +62,13 @@ workbox.strategies.staleWhileRevalidate({
 //register icon using cachefirst
 workbox.routing.registerRoute(
   "https://fonts.gstatic.com/s/materialicons/v67/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2",
-workbox.strategies.cacheFirst({
+new CacheFirst({
   cacheName: 'materialize-icons', //cache name
   plugins: [
-    new workbox.cacheableResponse.Plugin({
+    new CacheableResponsePlugin({
       statuses: [0, 200],
     }),
-    new workbox.expiration.Plugin({
+    new ExpirationPlugin({
       maxAgeSeconds: 365 * 24 * 60 * 60,
       maxEntries: 60,
     }),
@@ -68,7 +79,7 @@ workbox.strategies.cacheFirst({
 //register all file in pages folder using staleWhileRevalidate strategies
 workbox.routing.registerRoute(
   new RegExp('/pages/'),
-  workbox.strategies.staleWhileRevalidate({
+new StaleWhileRevalidate({
     cacheName: "pages"
   })
 )
@@ -76,7 +87,30 @@ workbox.routing.registerRoute(
 //register api using staleWhileRevalidate
 workbox.routing.registerRoute(
   new RegExp('https://api.football-data.org/v2/'),
-workbox.strategies.staleWhileRevalidate({
+new StaleWhileRevalidate({
   cacheName: 'football-data.org',
 })
 )
+
+
+self.addEventListener("push", event => {
+  let body;
+  if (event.data) {
+    body = event.data.text();
+  } else {
+    body = "push message no payload"
+  }
+  const options = {
+    body: body,
+    icon: "logos/logo512x512.png",
+    vibrate: [100, 50, 100],
+    data: {
+      dateOfArrival: Date.now(),
+      primaryKey: 1
+    }
+  };
+
+  event.waitUntil(
+    self.registration.showNotification("push Notification", options)
+  );
+});

@@ -25,7 +25,7 @@ function getScore() {
   //mengecek apabila terdapat cache di browser
   if ('caches' in window) {
     //mengambil cache dimana terapat data hasil fetch
-    caches.match(base_url + 'matches?status=FINISHED').then(response => {
+    caches.match(base_url + 'competitions/2021/matches?status=FINISHED').then(response => {
       if (response) {
         response.json().then(data => {
           let scoresHTML = '';
@@ -37,7 +37,7 @@ function getScore() {
                   <div class="row col s12">
                     <div class="col s12">
                       <div cslass="competition center-align">
-                        <span>${data.competition.name}</span>
+                        <span>Premiere League</span>
                       </div>
                     </div>
                     <div class="row col s12 m6 home-wrapper">
@@ -116,7 +116,7 @@ function getScore() {
   }
 
   //memuat data dari API
-  fetch(base_url + 'matches?status=FINISHED', {
+  fetch(base_url + 'competitions/2021/matches?status=FINISHED', {
     headers: {
       'X-Auth-Token': '8465138ab47e446b98a9844d9986b140',
     }
@@ -135,7 +135,7 @@ function getScore() {
             <div class="row col s12">
               <div class="col s12">
                 <div cslass="competition center-align">
-                  <span>${data.competition.name}</span>
+                  <span>Premiere League</span>
                 </div>
               </div>
               <div class="row col s12 m6 home-wrapper">
@@ -219,7 +219,7 @@ function getScore() {
 //fungsi untuk mendapatkan jadwal pertandingan
 function getSchedules() {
   if ('caches' in window) {
-    caches.match(base_url + 'matches?status=SCHEDULED').then(response => {
+    caches.match(base_url + 'competitions/2021/matches?status=SCHEDULED').then(response => {
       if (response) {
         response.json().then(data => {
           let schedulesHTML = '';
@@ -230,7 +230,7 @@ function getSchedules() {
               <div class="card white">
                 <div class="card-content">
                   <div class="competition center-align">
-                    <span>${data.competition.name}</span>
+                    <span>Premiere League</span>
                   </div>
 
                   <div class="row">
@@ -265,7 +265,7 @@ function getSchedules() {
 
 
       //memuat data dari api
-      fetch(base_url + 'matches?status=SCHEDULED', {
+      fetch(base_url + 'competitions/2021/matches?status=SCHEDULED', {
         headers: {
           'X-Auth-Token': '8465138ab47e446b98a9844d9986b140',
         }
@@ -281,7 +281,7 @@ function getSchedules() {
             <div class="card white">
               <div class="card-content">
                 <div class="competition center-align">
-                  <span>${data.competition.name}</span>
+                  <span>premiere league</span>
                 </div>
 
                 <div class="row">
@@ -326,7 +326,7 @@ function getScheduleById() {
               <div class="card white">
                 <div class="card-content">
                   <div class="competition center-align">
-                    <span>${data.match.competition.name}</span>
+                    <span>Premiere League</span>
                   </div>
 
                   <div class="row">
@@ -342,7 +342,20 @@ function getScheduleById() {
                     <div class="col s12 center-align border-top">
                       <span>${data.match.utcDate}</span>
                     </div>
-                    <!-- siapa tau pengen nambah disini -->
+                    <!--extra -->
+                    <div class="col s12 center-align border-top red-text">
+                      <span>Place</span>
+                    </div>
+                    <div class="row col s12 center-align">
+                      <span>${data.match.venue}</span>
+                    </div>
+                    <div class="col s12 center-align red-text">
+                      <span>Nation</span>
+                    </div>
+                    <div class="row col s12 center-align">
+                      <span>${data.match.competition.area.name}</span>
+                    </div>
+                    <!--extra end -->
                   </div>
                 </div>
               </div>
@@ -372,7 +385,7 @@ function getScheduleById() {
         <div class="card white">
           <div class="card-content">
             <div class="competition center-align">
-              <span>${data.match.competition.name}</span>
+              <span>Premiere League</span>
             </div>
 
             <div class="row">
@@ -426,7 +439,7 @@ function getSavedSchedules() {
         <div class="card white">
           <div class="card-content">
             <div class="competition center-align">
-              <span>${data.competition.name}</span>
+              <span>Premiere League</span>
             </div>
 
             <div class="row">
@@ -469,7 +482,7 @@ function getSavedScheduleById() {
         <div class="card white">
           <div class="card-content">
             <div class="competition center-align">
-              <span>${data.competition.name}</span>
+              <span>Premiere League</span>
             </div>
 
             <div class="row">
